@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meme-generator</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body onload="init()">
+
+    <header class="navbar flex space-between">
+        <img src="img/LOGO.png" alt="LOGO" class="logo">
+        <ul class="clear-list flex nav-list">
+            <li><a href="#" onclick="backToGallery()" data-trans="gallery">gallery</a></li>
+            <li><a href="#"onclick="onSaved()"data-trans="saved">saved-memes</a></li>
+            <li><a href="#" data-trans="about">about</a></li>
+            <li><a href="#"><select onchange="onSetLang(this.value)">
+                        <option value="en">English</option>
+                        <option value="he">עברית</option>
+                    </select></a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="gallery grid gallery-container">
+        </section>
+
+        <section class="meme-container flex justify-center hidden">
+            <div class="meme-control flex justify-center ">
+                <canvas class="memeCanvas">
+                    if i see this canvas wasnt rendered properly
+                </canvas>
+                <div class="txts-list flex "></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="saved-container hidden">
+    </div>
+
+    <footer class="main-footer-container">
+        <div class="footer-content">
+            <div class="logo-container">
+                <img src="img/LOGO.png" alt="LOGO" class="small-logo">
+            </div>
+            <small class="copyrights">©2014 Mr-meme.com - All Rights Reserved - challenge by Coding-Academy</small><br><br>
+        </div>
+    </footer>
+
+    
+
+
+
+    <script src="js/service-storage.js"></script>
+    <script src="js/service-i18n.js"></script>
+    <script src="js/service-move.js"></script>
+    <script src="js/service-meme.js"></script>
+    <script src="js/service-gallery.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+
+</html>

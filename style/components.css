@@ -1,0 +1,160 @@
+.navbar {
+    background-color: orange;
+    align-items: center;
+}
+
+
+.nav-list a {
+    padding-inline-end: 15px;
+    color: aliceblue;
+    font-size: 18px;
+}
+
+.nav-list a:hover{
+    color: rgb(177, 125, 65);
+}
+
+.logo {
+
+    max-width: 300px;
+    max-height: 50px;
+    display: block;
+    margin: 10px 10px;
+}
+
+.gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.gallery-container>img {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+/* ////////////////memes/////////////////// */
+
+.meme-control {
+    flex-direction: row;
+    /* border: 2px solid green; */
+    margin-top: 20px;
+}
+
+.memeCanvas {
+    border: 2px solid orange;
+    border-radius: 2px;
+    /* margin-top: 10px; */
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    align-self: flex-start;
+}
+
+.meme-container {
+    flex-direction: column;
+}
+
+.icon {
+    max-width: 30px;
+}
+
+.txt-editor {
+
+    background-image: linear-gradient(orange, rgb(253, 196, 88));
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.txts-list {
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 50px;
+}
+
+
+
+/* buttons */
+
+i.guides {
+    font-style: normal;
+}
+
+.new-line-btn {
+    cursor: pointer;
+}
+
+.addLineIcon {
+    max-width: 8px;
+}
+
+.trashIcon {
+    cursor: pointer;
+}
+
+.download-btn {
+    background-color: orange;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.facebook-btn {
+    background-color: rgb(32, 94, 175);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: aliceblue;
+}
+
+.show-friend-btn {
+    background-color: rgb(1, 8, 17);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: aliceblue;
+}
+
+input[type=number] {
+    box-sizing: border-box;
+    width: 70px;
+}
+
+input[type=color] {
+    cursor: pointer;
+}
+
+input[type=option] {
+    cursor: pointer;
+}
+
+select {
+    cursor: pointer;
+}
+
+
+/* footer */
+
+.main-footer-container {
+    background-color: rgb(215, 205, 186);
+    text-align: center;
+    color: beige;
+    margin-top: 20px;
+}
+
+
+
+.small-logo {
+    width: 100%;
+
+}
+
+.logo-container {
+    max-width: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 45%;
+    opacity: 30%;
+}

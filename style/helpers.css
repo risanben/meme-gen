@@ -1,0 +1,50 @@
+/* flex */
+
+.flex{
+    display: flex;
+}
+
+.space-between{
+justify-content: space-between;
+}
+
+.clear-list {
+    list-style-type: none;
+    /* margin: 0;
+    padding: 0; */
+}
+
+a{
+    text-decoration: none;
+}
+
+.grid{
+    display: grid;
+}
+
+.hidden {
+    display: none;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+.flex-column{
+    flex-direction: column;
+}
+
+body.rtl {
+    direction: rtl;
+}
+
+body{
+    margin: 0;
+}
+
+.flex.align-center {
+    align-items: center;
+}
