@@ -1,0 +1,30 @@
+
+.gallery .xxxs {
+    grid-row: span 1;
+}
+
+.gallery .xxs {
+    grid-row: span 2;
+}
+
+.gallery .xs {
+    grid-row: span 3;
+}
+
+.gallery .s {
+    grid-row: span 4;
+}
+
+.gallery .m {
+    grid-row: span 5;
+}
+
+.gallery .l {
+    grid-row: span 6;
+}
+
+.gallery .xl {
+    grid-row: span 7;
+}
+
+

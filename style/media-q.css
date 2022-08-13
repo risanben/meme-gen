@@ -1,0 +1,139 @@
+/* phone first */
+
+/* SMALL */
+@media (max-width: 600px) {
+
+  .gallery-container {
+    grid-template-columns: 1fr
+  }
+
+
+  /* about  */
+
+ 
+  .my-description {
+    padding-top: 0px;
+    padding-bottom: 50px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    margin: 0;
+    margin-top: 50px;
+    /* border: 2px solid green; */
+  }
+
+  .my-description {
+    /* border: 2px solid pink; */
+    text-align: center;
+    padding-inline-start: none;
+    padding-inline-start: 0;
+  }
+
+  .my-image-container {
+    /* border: 2px solid red; */
+    /* margin-left: 15%; */
+    margin-top: 20px;
+    align-self: center;
+  }
+
+  /* header */
+
+  .navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+
+  .filter-container{
+   /* background-color: red; */
+  padding-top: 50px;
+
+  }
+
+  .nav-list {
+    position: fixed;
+    flex-direction: column;
+    right: 0px;
+    top: 35px;
+    background-color: orange;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s ease-in, padding-top.45s ease-in, padding-bottom .45s ease-in;
+  }
+
+  .nav-list.open{
+    position: fixed;
+    flex-direction: column;
+    right: 0px;
+    top: 35px;
+    background-color: orange;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    max-height: 160px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .logo {
+    max-width: 150px;
+    margin: 10px 10px;
+}
+
+  .nav-list li{
+   padding-bottom: 20px;
+  }
+
+  .menu:hover{
+    cursor: pointer;
+  }
+
+
+/* meme control */
+.meme-control{
+  /* border: 2px solid green; */
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.memeCanvas{
+  max-width: 100vw;
+  align-self: center;
+}
+
+.bottom-buttons{
+  /* background-color: red; */
+  margin-top: 20px;
+}
+
+.txts-list{
+  padding-left: 0;
+}
+
+/* saved memes  */
+
+.saved-container{
+ margin-top: 90px;
+}
+
+.saved-memes{
+  flex-direction: column;
+}
+
+.saved-memes-link{
+ margin-bottom: 30px;
+}
+
+}
+
+@media (min-width: 600px) {
+
+  .nav-list{
+    /* display: block; */
+  }
+
+
+  .menu {
+    display: none;
+  }
+}

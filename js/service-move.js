@@ -1,13 +1,12 @@
 'use strict'
 
+let gDraggedTxtPos 
+
 // const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function addListeners() {
     addMouseListeners()
     // addTouchListeners()
-    // window.addEventListener('resize', () => {
-    //     resizeCanvas() 
-    // })
 }
 
 function addMouseListeners() {
@@ -16,37 +15,41 @@ function addMouseListeners() {
     gElCanvas.addEventListener('mouseup', onUp)
 }
 
-// function addTouchListeners() {
-//     gElCanvas.addEventListener('touchmove', onMove)
-//     gElCanvas.addEventListener('touchstart', onDown)
-//     gElCanvas.addEventListener('touchend', onUp)
-// }
+function addTouchListeners() {
+    // gElCanvas.addEventListener('touchmove', onMove)
+    // gElCanvas.addEventListener('touchstart', onDown)
+    // gElCanvas.addEventListener('touchend', onUp)
+}
 
 function onDown(ev) {
     // Getting the clicked position
+    ev.preventDefault()
     const pos = getEvPos(ev)
-    console.log('pos:', pos)
+    
     // // { x: 15, y : 15 }
-    if (!isCircleClicked(pos)) return
-    // setCircleDrag(true)
-    // gStartPos = pos
-    // document.body.style.cursor = 'grabbing'
+    if (!isLineClicked(pos)) return
+    setTxtDrag(true)
+    gDraggedTxtPos = pos
+    document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
-    // const circle = getCircle();
-    // if (!circle.isDrag) return
-    // const pos = getEvPos(ev)
-    // const dx = pos.x - gStartPos.x
-    // const dy = pos.y - gStartPos.y
-    // moveCircle(dx, dy)
-    // gStartPos = pos
-    // renderCanvas()
+    ev.preventDefault()
+    const line = getCurrLine();
+    if(!line)return
+    if (!line.isDrag) return
+    const pos = getEvPos(ev)
+    const dx = pos.x - gDraggedTxtPos.x
+    const dy = pos.y - gDraggedTxtPos.y
+    moveLine(dx, dy)
+    gDraggedTxtPos = pos
+    drawCanvas()
+    
 }
 
 function onUp() {
-    // setCircleDrag(false)
-    // document.body.style.cursor = 'grab'
+    setTxtDrag(false)
+    document.body.style.cursor = 'default'
 }
 
 function getEvPos(ev) {
@@ -54,59 +57,37 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY
     }
-    // const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
-    // if (gTouchEvs.includes(ev.type)) {
-    //     ev.preventDefault()
-    //     ev = ev.changedTouches[0]
-    //     pos = {
-    //         x: ev.pageX - ev.target.offsetLeft,
-    //         y: ev.pageY - ev.target.offsetTop
-    //     }
-    // }
     return pos
 }
 
-function isCircleClicked(clickedPos) {
-    console.log('gmem:', gMeme.txts)
-    
-    // console.log('gmeme11111:', gMeme.txts[0]['value'])
-    //let canvas = displayTextWidth.canvas || (displayTextWidth.canvas = document.createElement("canvas"));
-  let canvas = gElCanvas
-    let context = canvas.getContext("2d");
-  context.font = gMeme.txts[0].size;
-  let metrics = context.measureText(gMeme.txts[0].line);
-  console.log("cmcmcm:",metrics.width)
-    // const metrics = gCtx.measureText('text');
-    // const fontHeight =
-    // metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
-    // const actualHeight =
-    // metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
-
-    // console.log('fontHeight:', fontHeight)
-    // console.log('actualHeight:', actualHeight)
-    
-    // gMeme.txts[0].x
-    // gMeme.txts[0].y
-    // const pos = gCircle.pos
-    // const { pos } = findLinePos()
-    // const rect = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
-    // return distance <= gCircle.size
-
-
+function isLineClicked(clickedPos) {
+    for (let i = 0; i < gMeme.txts.length; i++) {
+        const txt = gMeme.txts[i];
+        const width = txt.width / 1.7
+        const height = txt.height / 2
+        if (clickedPos.x >= txt.x - width && clickedPos.x <= txt.x + width && clickedPos.y >= txt.y - height && clickedPos.y <= txt.y + height) {
+            gMeme.selectedTxtIdx = i
+            console.log('true:')
+            return true
+        }
+    }
+    console.log('false:')
+    return false
 }
 
-function findLinePos() {
-
-    var x = gMeme.txts.map(function (txt) {
-        return { x: txt.x, y: txt.y, fontsize: txt.size }
-    })
-
-
+function setTxtDrag(isDrag) {
+    gMeme.txts[gMeme.selectedTxtIdx].isDrag = isDrag
 }
 
-// rect = {
-//     x: 32,
-//     y: 32,
-//     w: 70,
-//     h: 30
-// };
+function getCurrLine() {
+    return gMeme.txts[gMeme.selectedTxtIdx]
+}
+
+function moveLine(distanceX, distanceY) {
+    if (gMeme.txts[gMeme.selectedTxtIdx].x < 0 && distanceX < 0) return
+    if (gMeme.txts[gMeme.selectedTxtIdx].y < 0 && distanceY < 0) return
+    if (gMeme.txts[gMeme.selectedTxtIdx].x > gElCanvas.width && distanceX > 0) return
+    if (gMeme.txts[gMeme.selectedTxtIdx].y > gElCanvas.height && distanceY > 0) return
+    gMeme.txts[gMeme.selectedTxtIdx].x += distanceX
+    gMeme.txts[gMeme.selectedTxtIdx].y += distanceY
+}

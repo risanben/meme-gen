@@ -25,6 +25,21 @@
 .fa.bin::before{
     content: "\f1f8"
 }
+.fa.menu::before{
+    content: "\f0c9"
+}
+.fa.save::before{
+    content: "\f02e"
+}
+.ga.facebook::before{
+    content: "\f082"
+}
+.ga.instagram::before{
+    content: "\e055"
+}
+.ga.github::before{
+    content: "\f09b"
+}
 
 
 

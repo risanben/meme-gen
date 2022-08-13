@@ -85,28 +85,40 @@ var gTrans = {
         en: 'Share To Facebook',
         he: 'שתף בפייסבוק'
     },
-    'book-name-filter': {
-        en: 'Book Name',
-        he: 'שם הספר'
+    'all': {
+        en: 'All',
+        he: "הכל"
     },
-    'modal-book-rate': {
-        en: 'Book Rate',
-        he: 'ביקורת הספר'
+    'funny': {
+        en: 'Funny',
+        he: "מצחיק"
     },
-    'read': {
-        en: 'read',
-        he: 'קרא'
+    'cute': {
+        en: 'Cute',
+        he: "חמוד"
     },
-    'update': {
-        en: 'update',
-        he: 'עדכן'
+    'celebs': {
+        en: 'Celebs',
+        he: "סלבס"
     },
-    'delete': {
-        en: 'delete',
-        he: 'מחק'
+    'babies': {
+        en: 'Babies',
+        he: "תינוקות"
     },
-    'no-match': {
-        en: 'Unfortunately no book is matching your search',
-        he: 'לא נמצא ספר זה'
+    'politicians': {
+        en: 'Politicians',
+        he: "פוליטיקאים"
+    },
+    'red-heads': {
+        en: 'Red-heads',
+        he: "ג'ינג'ים"
+    },
+    'dogs': {
+        en: 'Dogs',
+        he: "כלבים"
+    },
+    'movie-stars': {
+        en: 'Movie-stars',
+        he: "כוכבי-סרטים"
     }
 }

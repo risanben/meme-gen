@@ -1,8 +1,10 @@
 'use strict'
 
 function createGmeme(imgId) {
+
     return {
         selectedImgId: imgId,
+        selectedTxtIdx: null,
         txts: [createTxt('Your Text', 150, 70), createTxt('Your Text', 150, 300)]
     }
 }
@@ -11,6 +13,8 @@ function createTxt(line, x, y) {
     return {
         line,
         size: 40,
+        width: 250,
+        height: 50,
         align: 'left',
         color: '#000000',
         fontFamily: 'Impact',
@@ -23,18 +27,25 @@ function createTxt(line, x, y) {
         shadowOffsetY: 1,
         shadowBlur: 0,
         x,
-        y
+        y,
+        isDrag: false
     }
 }
 
 function initCanvas() {
-
     gElCanvas = document.querySelector('.memeCanvas')
-    gCtx = gElCanvas.getContext('2d')
 
+    // fixing lines location 
+    // let gElCanvasSize = {width:gElCanvas.width,height:gElCanvas.height}
+    // for (let i = 0; i < gMeme.txts.length; i++){
+    //     gMeme.txts[i].x = gElCanvasSize.width / 2
+    // }
+    
+    gCtx = gElCanvas.getContext('2d')
+    
     gImgObj = new Image()
     gImgObj.src = getImgSrc()
-
+    
     // addListeners()
 
     gImgObj.onload = function () {
@@ -54,7 +65,8 @@ function getImgSrc() {
 }
 
 function drawCanvas() {
-    gCtx.drawImage(gImgObj, 0, 0)
+
+    gCtx.drawImage(gImgObj, 0, 0,)
     gMeme.txts.forEach(function (txt) {
         drawTxt(txt)
     })
@@ -62,8 +74,9 @@ function drawCanvas() {
 }
 
 function drawTxt(txt) {
+
     gCtx.font = txt.size + 'px' + ' ' + txt.fontFamily
-    // gCtx.textAlign = txt.align
+    gCtx.textAlign = txt.align
     gCtx.fillStyle = txt.color
     if (txt.isShadow) addTxtShadow(txt)
     if (txt.isOutline) addTxtOutline(txt)
@@ -71,13 +84,13 @@ function drawTxt(txt) {
 }
 
 function deleteTxt(txtIdx) {
-    gMeme.txts.splice(txtIdx, 1) 
+    gMeme.txts.splice(txtIdx, 1)
     drawCanvas()
     renderTxtsEditor()
 }
 
 function editTxt(elinput, txtIdx) {
-    var property = elinput.dataset.property 
+    var property = elinput.dataset.property
     var value
 
     switch (elinput.type) {
@@ -87,17 +100,27 @@ function editTxt(elinput, txtIdx) {
         case 'checkbox':
             value = elinput.checked
             break;
-        default: 
+        default:
             value = elinput.value;
-            break; 
+            console.log('elinput.value:', elinput.value)
+            break;
     }
+    console.log('gMeme.txts:', gMeme)
     gMeme.txts[txtIdx][property] = value
-    
+    console.log('gMeme.txts:', gMeme)
+
     drawCanvas()
 }
 
-function onNewLine(){
+function onNewLine() {
     gMeme.txts.push(createTxt('New Line', 150, 150))
+    drawCanvas()
+    renderTxtsEditor()
+}
+
+function onAddEmoji(emoji){
+    if (emoji === "add-emoji") return
+    gMeme.txts.push(createTxt(emoji, 150, 150))
     drawCanvas()
     renderTxtsEditor()
 }

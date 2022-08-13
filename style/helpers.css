@@ -16,6 +16,7 @@ justify-content: space-between;
 
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 .grid{
@@ -43,8 +44,18 @@ body.rtl {
 
 body{
     margin: 0;
+    font-family: lato;
 }
+
 
 .flex.align-center {
     align-items: center;
+}
+
+.background-black{
+    background-color: rgb(12, 7, 2);
+}
+
+.btn:hover{
+cursor: pointer;
 }

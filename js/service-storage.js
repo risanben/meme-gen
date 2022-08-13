@@ -1,5 +1,7 @@
 'use strict'
 
+let projectNumber = 1
+
 
 
 function saveToStorage(key, val) {
@@ -14,16 +16,7 @@ function loadFromStorage(key) {
 }
 
 function displaySaved(){
-    let savedMemes = loadFromStorage('memesDB')
-
-    var strHtml = `<a href="${savedMemes[0].url}" target="_blank"></a>`
- 
-    // strHtml = strHtml.join('')
-    document.querySelector('.saved-container').innerHTML = strHtml
-    
-    // var strHtml = savedMemes.map(meme =>`<a href="${meme.url}" target="_blank"></a>` )
- 
-    // strHtml = strHtml.join('')
-    // document.querySelector('.saved-container').innerHTML = strHtml
-
+    if(!gSavedMemes.length) return
+    let htmls = gSavedMemes.map(meme=> `<a href="${meme.url}"target="_blank"class="saved-memes-link">project - ${projectNumber++}</a>`).join(' ')
+    document.querySelector('.saved-memes').innerHTML = htmls
 }

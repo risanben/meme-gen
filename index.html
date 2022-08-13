@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>meme-generator</title>
+    <link rel="shortcut icon" href="img/icons/add.png" type="x-icon">
     <link rel="stylesheet" href="style/main.css">
 </head>
 
@@ -13,10 +14,11 @@
 
     <header class="navbar flex space-between">
         <img src="img/LOGO.png" alt="LOGO" class="logo">
+        <button class="fa menu" onclick="toggleNav()"></button>
         <ul class="clear-list flex nav-list">
-            <li><a href="#" onclick="backToGallery()" data-trans="gallery">gallery</a></li>
-            <li><a href="#"onclick="onSaved()"data-trans="saved">saved-memes</a></li>
-            <li><a href="#" data-trans="about">about</a></li>
+            <li><a href="#" onclick="onGoToGallery()" data-trans="gallery">gallery</a></li>
+            <li><a href="#" onclick="onGoToSaved()" data-trans="saved">saved-memes</a></li>
+            <li><a href="#" onclick="onGoToAbout()"data-trans="about">about</a></li>
             <li><a href="#"><select onchange="onSetLang(this.value)">
                         <option value="en">English</option>
                         <option value="he">עברית</option>
@@ -24,11 +26,27 @@
         </ul>
     </header>
 
+   
+
     <main>
+        <section class="filter-container flex justify-center">
+            <ul>
+                <button class="filter-btn btn filter1" data-trans="all" value="all" onclick="onSetFilterBy(value,'.filter1')">All</button>
+                <button class="filter-btn btn filter2" data-trans="funny" value="funny" onclick="onSetFilterBy(value,'.filter2')">Funny</button>
+                <button class="filter-btn btn filter3" data-trans="cute" value="cute" onclick="onSetFilterBy(value,'.filter3')">Cute</button>
+                <button class="filter-btn btn filter4" data-trans="celebs" value="celebs" onclick="onSetFilterBy(value,'.filter4')">Celebs</button>
+                <button class="filter-btn btn filter5" data-trans="babies" value="babies" onclick="onSetFilterBy(value,'.filter5')">Babies</button>
+                <button class="filter-btn btn filter6" data-trans="politicians" value="politicians" onclick="onSetFilterBy(value,'.filter6')">Politicians</button>
+                <button class="filter-btn btn filter7" data-trans="red-heads" value="red-heads" onclick="onSetFilterBy(value,'.filter7')">Red Heads</button>
+                <button class="filter-btn btn filter8" data-trans="dogs" value="dogs" onclick="onSetFilterBy(value,'.filter8')">Dogs</button>
+                <button class="filter-btn btn filter9" data-trans="movie-stars" value="movie-stars" onclick="onSetFilterBy(value,'.filter9')">Movie Stars</button>
+            </ul>
+        </section>
+
         <section class="gallery grid gallery-container">
         </section>
 
-        <section class="meme-container flex justify-center hidden">
+        <section class="meme-container hidden">
             <div class="meme-control flex justify-center ">
                 <canvas class="memeCanvas">
                     if i see this canvas wasnt rendered properly
@@ -37,20 +55,47 @@
             </div>
         </section>
     </main>
+    
+    <div class="about-container flex flex-row hidden">
+        <div class="my-image-container">
+            <img class="my-image" src="img/me-modified.png" alt="">
+            <div class="me-headings flex flex-column">
+                <h2>Risan Benichou</h2>
+                <span>Fullstack Developer</span>
+                <div class="social-links">
+                    <span class="ga facebook"></span>
+                    <span class="ga instagram"></span>
+                    <span class="ga github"></span>
+                </div>
+            </div>
+        </div>
+        <div class="my-description ">
+            Hello, my name is Risan. I am a fullstack developer consecteturorem ipsum dolor <br> amet consectetur adipisicing elit.
+             Iusto at dolore e, laboriosam veritatis, quos non quis ad perspiciatis,
+             totam corporis ea, alias ut unde. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque,
+             laboriosam veritatis, quos non quis ad perspiciatidolor dolorem modi vitae adipisci ut asperiores perferendis repudiandae quas, alias, velit recusandae odio sit, deleniti laborum quisquam ea.
+             <br><br><br>
+             SPRINT 2 BY CODING-ACADEMY.
+        </div>
+    </div>
 
-    <div class="saved-container hidden">
+
+    <div class="saved-container flex hidden">
+       
+<section class="saved-memes flex flex-row"> You havent saved a project yet </section>
     </div>
 
     <footer class="main-footer-container">
-        <div class="footer-content">
+        <div class="footer-content flex flex-column">
             <div class="logo-container">
                 <img src="img/LOGO.png" alt="LOGO" class="small-logo">
             </div>
-            <small class="copyrights">©2014 Mr-meme.com - All Rights Reserved - challenge by Coding-Academy</small><br><br>
+            <small class="copyrights">©2014 Mr-meme.com - All Rights Reserved - challenge by
+                Coding-Academy</small><br><br>
         </div>
     </footer>
 
-    
+
 
 
 
@@ -59,7 +104,9 @@
     <script src="js/service-move.js"></script>
     <script src="js/service-meme.js"></script>
     <script src="js/service-gallery.js"></script>
-    <script src="js/controller.js"></script>
+    <script src="js/controller-pages.js"></script>
+    <script src="js/controller-meme.js"></script>
+    <script src="js/controller-gallery.js"></script>
 </body>
 
 </html>

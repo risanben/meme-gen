@@ -8,9 +8,10 @@
     padding-inline-end: 15px;
     color: aliceblue;
     font-size: 18px;
+    text-transform: capitalize;
 }
 
-.nav-list a:hover{
+.nav-list a:hover {
     color: rgb(177, 125, 65);
 }
 
@@ -23,16 +24,26 @@
 }
 
 .gallery-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, 235px);
     grid-gap: 10px;
     padding: 10px;
+    justify-content: center;
+    justify-items: center;
+
 }
 
 .gallery-container>img {
     display: block;
     width: 100%;
+    height: 100%;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 1em;
+    object-fit: cover;
+}
+
+.gallery {
+    justify-content: center;
+    min-height: 65vh;
 }
 
 
@@ -43,6 +54,7 @@
     flex-direction: row;
     /* border: 2px solid green; */
     margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 .memeCanvas {
@@ -55,6 +67,7 @@
 
 .meme-container {
     flex-direction: column;
+    /* border: 2px solid green; */
 }
 
 .icon {
@@ -78,12 +91,29 @@
 
 /* buttons */
 
+.show-friend-btn:hover,
+.saving-btn:hover,
+.facebook-btn:hover{
+    opacity: 0.6;
+}
+
+.filter-btn:hover{
+color: orange;
+}
+
 i.guides {
     font-style: normal;
 }
 
 .new-line-btn {
     cursor: pointer;
+}
+
+.download-btn:hover {
+    cursor: pointer;
+    background-color: rgb(224, 183, 107);
+    color: rgba(9, 9, 9, 0.399);
+
 }
 
 .addLineIcon {
@@ -94,12 +124,30 @@ i.guides {
     cursor: pointer;
 }
 
+.saving-btn{
+    margin: 10px;
+    background-color: orange;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
 .download-btn {
     background-color: orange;
     border: none;
     padding: 10px;
     border-radius: 4px;
 }
+
+.bottom-buttons {
+    margin-top: 20px;
+}
+
+.save-btn {
+    background-color: red;
+}
+
 
 .facebook-btn {
     background-color: rgb(32, 94, 175);
@@ -108,6 +156,20 @@ i.guides {
     border-radius: 4px;
     color: aliceblue;
 }
+
+.filter-btn {
+    border: none;
+    background-color: inherit;
+}
+
+.menu {
+    font-size: 30px;
+    background-color: orange;
+    color: rgb(1, 8, 17);
+    border: none;
+}
+
+
 
 .show-friend-btn {
     background-color: rgb(1, 8, 17);
@@ -141,7 +203,7 @@ select {
     background-color: rgb(215, 205, 186);
     text-align: center;
     color: beige;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 
@@ -155,6 +217,87 @@ select {
     max-width: 150px;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-left: 45%;
     opacity: 30%;
+}
+
+.footer-content{
+    /* border: 2px solid green; */
+    align-items: center;
+}
+
+
+/* about */
+.about-container {
+    /* border: 2px solid green; */
+    min-height: 70vh;
+    background-color: rgb(12, 7, 2);
+    margin: 30px 40px 0 40px;
+    color: orange;
+
+}
+
+.my-image-container {
+    /* border: 2px solid rgb(230, 9, 152);  */
+    max-width: 300px;
+}
+
+
+
+.my-image {
+    width: 100%;
+}
+
+.me-headings {
+    /* border: 2px solid red; */
+    margin-top: 20px;
+}
+
+.me-headings>* {
+
+    text-align: center;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.social-links span {
+    padding-inline-end: 10px;
+    font-size: 20px;
+}
+
+.social-links>*:hover {
+    color: rgb(234, 195, 123);
+    cursor: pointer;
+}
+
+.my-description {
+
+    padding-inline-start: 80px;
+    /* align-items: center; */
+    padding-top: 80px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+/* saved-memes */
+
+.saved-memes-link {
+    padding: 20px;
+    background-color: orange;
+    border-radius: 10px;
+    margin-right: 20px;
+    max-height: 25px;
+}
+
+.saved-memes-link:hover {
+    cursor: pointer;
+    background-color: rgb(244, 190, 89);
+}
+
+.saved-container {
+    justify-content: center;
+    align-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    min-height: 66.5vh;
 }
