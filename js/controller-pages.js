@@ -1,5 +1,9 @@
 'use strict'
 
+const elModal = document.querySelector(".modal")
+const elModalMessage = document.querySelector(".modal-msg")
+let modalMsg
+
 function onGoToSaved() {
     if (!elMemeContainer.classList.contains("hidden")) {
         elMemeContainer.classList.add("hidden")
@@ -77,4 +81,14 @@ function onGoToGallery() {
     elMemeContainer.classList.remove("hidden")
     elGallery.classList.add("hidden")
     elFilterContainer.classList.add("hidden")
+}
+
+function openModal(msg){
+elModalMessage.innerText = msg
+elModal.classList.add("open")
+setTimeout(closemodal,2000)
+}
+
+function closemodal(){
+    elModal.classList.remove("open")
 }

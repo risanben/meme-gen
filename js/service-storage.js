@@ -16,7 +16,10 @@ function loadFromStorage(key) {
 }
 
 function displaySaved(){
-    if(!gSavedMemes.length) return
-    let htmls = gSavedMemes.map(meme=> `<a href="${meme.url}"target="_blank"class="saved-memes-link">project - ${projectNumber++}</a>`).join(' ')
+    let memeFromStorage = loadFromStorage('memeDB')
+    console.log('memeFromStorage:', memeFromStorage)
+    if (!memeFromStorage || !memeFromStorage.length) return 
+    
+    let htmls = memeFromStorage.map(meme=> `<a href="${meme.url}"target="_blank"class="saved-memes-link">project - ${projectNumber++}</a>`).join(' ')
     document.querySelector('.saved-memes').innerHTML = htmls
 }

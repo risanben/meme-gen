@@ -10,6 +10,7 @@ function createImgs() {
         createImage('./img/gallery/3.jpg', ['cute','animals','dogs','babies'],"l"),
         createImage('./img/gallery/4.jpg', ['animal','cute'],"l"),
         createImage('./img/ununiformedSizes/drevil.jpg', ['movie-stars'],"m"),
+        createImage('./img/ununiformedSizes/19.jpg', ['cute','babies'],"l"),
         createImage('./img/gallery/5.jpg', ['cute','babies'],"l"),
         createImage('./img/gallery/6.jpg', ['happy'],"s"),
         createImage('./img/gallery/7.jpg', ['babies','cute'],"s"),

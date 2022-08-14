@@ -1,12 +1,17 @@
 'use strict'
+let gMeme
+let gSavedMemes = []
 
 function createGmeme(imgId) {
 
-    return {
-        selectedImgId: imgId,
-        selectedTxtIdx: null,
-        txts: [createTxt('Your Text', 150, 70), createTxt('Your Text', 150, 300)]
-    }
+  gMeme = {
+
+      selectedImgId: imgId,
+      selectedTxtIdx: 0,
+      txts: [createTxt('Your Text', 150, 70), createTxt('Your Text', 150, 300)]
+
+  }
+    
 }
 
 function createTxt(line, x, y) {
@@ -32,30 +37,7 @@ function createTxt(line, x, y) {
     }
 }
 
-function initCanvas() {
-    gElCanvas = document.querySelector('.memeCanvas')
 
-    // fixing lines location 
-    // let gElCanvasSize = {width:gElCanvas.width,height:gElCanvas.height}
-    // for (let i = 0; i < gMeme.txts.length; i++){
-    //     gMeme.txts[i].x = gElCanvasSize.width / 2
-    // }
-    
-    gCtx = gElCanvas.getContext('2d')
-    
-    gImgObj = new Image()
-    gImgObj.src = getImgSrc()
-    
-    // addListeners()
-
-    gImgObj.onload = function () {
-        gElCanvas.width = gImgObj.width
-        gElCanvas.height = gImgObj.height
-        gMeme.txts[1].y = gImgObj.height - 70
-
-        drawCanvas()
-    }
-}
 
 function getImgSrc() {
     var imgIdx = gImgs.findIndex(function (img) {
@@ -84,7 +66,8 @@ function drawTxt(txt) {
 }
 
 function deleteTxt(txtIdx) {
-    gMeme.txts.splice(txtIdx, 1)
+    gMeme.txts.splice(gMeme.selectedTxtIdx, 1)
+    gMeme.selectedTxtIdx = gMeme.txts.length - 1
     drawCanvas()
     renderTxtsEditor()
 }
@@ -102,23 +85,20 @@ function editTxt(elinput, txtIdx) {
             break;
         default:
             value = elinput.value;
-            console.log('elinput.value:', elinput.value)
             break;
     }
-    console.log('gMeme.txts:', gMeme)
-    gMeme.txts[txtIdx][property] = value
-    console.log('gMeme.txts:', gMeme)
-
+    gMeme.txts[gMeme.selectedTxtIdx][property] = value
     drawCanvas()
 }
 
 function onNewLine() {
-    gMeme.txts.push(createTxt('New Line', 150, 150))
+    gMeme.txts.push(createTxt('New Line', gElCanvas.width / 3, 150))
+    gMeme.selectedTxtIdx = gMeme.txts.length - 1
     drawCanvas()
     renderTxtsEditor()
 }
 
-function onAddEmoji(emoji){
+function onAddEmoji(emoji) {
     if (emoji === "add-emoji") return
     gMeme.txts.push(createTxt(emoji, 150, 150))
     drawCanvas()
@@ -131,3 +111,41 @@ function addTxtOutline(txt) {
     gCtx.strokeText(txt.line, txt.x, txt.y)
 }
 
+function switchLineUp() {
+    gMeme.selectedTxtIdx--
+    if (gMeme.selectedTxtIdx <= -1) {
+        gMeme.selectedTxtIdx = gMeme.txts.length - 1
+    }
+    // console.log('gMeme.selectedTxtIdx:', gMeme.selectedTxtIdx)
+}
+function switchLineDown() {
+    gMeme.selectedTxtIdx++
+    if (gMeme.selectedTxtIdx >= gMeme.txts.length) {
+        gMeme.selectedTxtIdx = 0
+    }
+    // console.log('gMeme.selectedTxtIdx:', gMeme.selectedTxtIdx)
+}
+function changeTxtVertically(direction){
+    gMeme.txts[gMeme.selectedTxtIdx].y += direction === "up" ? -2 : +2
+}
+
+function changeTxtHorizontally(direction){
+    gMeme.txts[gMeme.selectedTxtIdx].x += direction === "left" ? -2 : +2
+}
+
+function fitTxtToCanvas(height, width){
+    gMeme.txts.forEach((txt,i) =>{
+         txt.x = width / 3 
+        if (i === 1){
+            txt.y = height - 70
+        }
+})
+}
+
+function saveMeme(url){
+    let meme = {
+        url: url
+    }
+    gSavedMemes.push(meme)
+    saveToStorage('memeDB',gSavedMemes)
+}

@@ -2,12 +2,9 @@
 
 let gImgs
 let gNextId = 1
-let gMeme
 let gCtx
 let gImgObj
-let gElCanvas
 let gCurrMemeUrl
-let gSavedMemes = []
 var gFilterBy = []
 
 function init() {
@@ -73,6 +70,13 @@ function onSetLang(lang) {
     if (lang === 'he') document.body.classList.add('rtl')
     else { document.body.classList.remove('rtl') }
     doTrans();
+
+    //   making sure menu closes on phone mood
+    if(elNavList.classList.contains("open")){
+        toggleNav()
+       }
+
+       openModal("language was changed")
 }
 
 

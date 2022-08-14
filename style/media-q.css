@@ -87,13 +87,25 @@
   .menu:hover{
     cursor: pointer;
   }
-
+/* modal  */
+.modal{
+  top:51px;
+  position: fixed;
+}
 
 /* meme control */
 .meme-control{
   /* border: 2px solid green; */
   flex-direction: column;
   padding-top: 30px;
+}
+
+.user-msg{
+  flex-direction: column;
+}
+.user-msg > *{
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .memeCanvas{

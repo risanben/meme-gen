@@ -46,7 +46,25 @@
     min-height: 65vh;
 }
 
+/* modal  */
+.modal{
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 98, 0);
+    color: whitesmoke;
+    position: absolute;
+    top: 69px;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+}
 
+.modal.open{
+    opacity: 1;
+}
 
 /* ////////////////memes/////////////////// */
 
@@ -71,20 +89,24 @@
 }
 
 .icon {
-    max-width: 30px;
+    max-width: 20px;
+}
+.icon:hover{
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 .txt-editor {
 
     background-image: linear-gradient(orange, rgb(253, 196, 88));
     border-radius: 7px;
-    padding: 10px;
+    padding: 30px;
 }
 
 .txts-list {
     flex-direction: column;
     justify-content: space-around;
-    padding-left: 50px;
+    padding-inline-start: 50px;
 }
 
 
@@ -109,6 +131,13 @@ i.guides {
     cursor: pointer;
 }
 
+.user-msg{
+    margin-top: 33px; 
+}
+.user-msg > *{
+    margin-inline-end: 5px;
+}
+
 .download-btn:hover {
     cursor: pointer;
     background-color: rgb(224, 183, 107);
@@ -125,7 +154,7 @@ i.guides {
 }
 
 .saving-btn{
-    margin: 10px;
+    /* margin: 10px; */
     background-color: orange;
     border: none;
     padding: 10px;
@@ -144,9 +173,9 @@ i.guides {
     margin-top: 20px;
 }
 
-.save-btn {
+/* .save-btn {
     background-color: red;
-}
+} */
 
 
 .facebook-btn {
@@ -203,7 +232,7 @@ select {
     background-color: rgb(215, 205, 186);
     text-align: center;
     color: beige;
-    /* margin-top: 20px; */
+    margin-top: 10px;
 }
 
 
